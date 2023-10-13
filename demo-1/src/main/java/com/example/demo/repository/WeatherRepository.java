@@ -11,4 +11,5 @@ import com.example.demo.model.Weather;
 public interface WeatherRepository extends JpaRepository<Weather, Integer> {
   
   List<Weather> findByName(String name);
+  
 }
