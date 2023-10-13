@@ -46,7 +46,7 @@
 		</tr>
 	</table>
 	<!-- 天気記録を追加、更新、削除するフォーム -->
-	<form action="/weather/process" method="post" th:object="${newWeather}">
+	<form th:action="@{/weather/process}" method="post" th:object="${newWeather}">
 		Location ID: <input type="text" th:field="*{location_id}" /><br />
 		Name: <input type="text" th:field="*{name}" /><br />
 		Temperature: <input type="text" th:field="*{temperature}" /><br />
