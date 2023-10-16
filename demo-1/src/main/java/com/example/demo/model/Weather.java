@@ -2,75 +2,77 @@ package com.example.demo.model;
 
 import java.sql.Timestamp;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
 @Entity
-@Table(name="weather")
+@Table(name = "weather")
 public class Weather {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
-    
-    private Integer location_id;
-    
-    private String name;
-    
-    private Integer temperature;
-    
-    private Integer humidity;
-    
-    private Timestamp date_time;
-    
-  public Integer getId() {
-    return id;
-  }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	private Integer location_id;
 
-  public Integer getLocation_id() {
-    return location_id;
-  }
+	private String name;
 
-  public void setLocation_id(Integer location_id) {
-    this.location_id = location_id;
-  }
-    
-        public String getName() {
-    return name;
-  }
+	private Integer temperature;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	private Integer humidity;
 
-  public Integer getTemperature() {
-    return temperature;
-  }
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+	private Timestamp date_time;
 
-  public void setTemperature(Integer temperature) {
-    this.temperature = temperature;
-  }
+	public Integer getId() {
+		return id;
+	}
 
-  public Integer getHumidity() {
-    return humidity;
-  }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-  public void setHumidity(Integer humidity) {
-    this.humidity = humidity;
-  }
+	public Integer getLocation_id() {
+		return location_id;
+	}
 
-  public Timestamp getDate_time() {
-    return date_time;
-  }
+	public void setLocation_id(Integer location_id) {
+		this.location_id = location_id;
+	}
 
-  public void setDate_time(Timestamp date_time) {
-    this.date_time = date_time;
-  }   
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(Integer temperature) {
+		this.temperature = temperature;
+	}
+
+	public Integer getHumidity() {
+		return humidity;
+	}
+
+	public void setHumidity(Integer humidity) {
+		this.humidity = humidity;
+	}
+
+	public Timestamp getDate_time() {
+		return date_time;
+	}
+
+	public void setDate_time(Timestamp date_time) {
+		this.date_time = date_time;
+	}
 }

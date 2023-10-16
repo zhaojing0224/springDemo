@@ -5,13 +5,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.model.Weather;
 import com.example.demo.repository.WeatherRepository;
 
 @Service
-@Transactional
 public class WeatherService {
 
 	@Autowired
@@ -19,7 +17,7 @@ public class WeatherService {
 
 	/**
 	 * レコードを全件取得する。
-	 * @return
+	 * @return Weatherリスト
 	 */
 	public List<Weather> findAllWeatherData() {
 
@@ -29,7 +27,7 @@ public class WeatherService {
 	/**
 	 * 指定した都市のレコードを取得する。
 	 * @param name
-	 * @return
+	 * @return Weatherリスト
 	 */
 	public List<Weather> findWetherDataListByName(String name) {
 
@@ -38,7 +36,7 @@ public class WeatherService {
 
 	/**
 	 * 指定したidのレコードを取得する
-	 * @return
+	 * @return Weather
 	 */
 	public Optional<Weather> findWetherDataListById(Integer id) {
 
@@ -46,10 +44,11 @@ public class WeatherService {
 	}
 
 	/**
-	 * 天気記録を追加、更新する
+	 * 天気記録を更新する
 	 * @param weather
-	 * @return
+	 * @return Weather
 	 */
+
 	public Weather saveWeather(Weather weather) {
 		return weatherRepository.save(weather);
 	}
@@ -63,4 +62,21 @@ public class WeatherService {
 		weatherRepository.deleteById(id);
 	}
 
+	/**
+	 * 指定したidのレコードを取得する
+	 * @return
+	 */
+	public List<Weather> findWeatherListById(Integer id) {
+
+		return weatherRepository.findWeatherListById(id);
+	}
+
+	public Optional<Weather> findWeatherById(Integer id) {
+		//Optional<Weather> optionalWeather = weatherRepository.findById(id);
+		//ModelMapper modelMapper = new ModelMapper();
+
+		// 使用 ModelMapper 进行对象映射
+		//return optionalWeather.map(weather -> modelMapper.map(weather, WeatherObj.class));
+		return weatherRepository.findById(id);
+	}
 }

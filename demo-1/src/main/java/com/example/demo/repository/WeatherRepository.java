@@ -12,4 +12,6 @@ public interface WeatherRepository extends JpaRepository<Weather, Integer> {
   
   List<Weather> findByName(String name);
   
+  List<Weather> findWeatherListById(Integer id);
+
 }

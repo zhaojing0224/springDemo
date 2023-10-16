@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<p>
+		<span th:text="${weather}">天気記録の編集</span>
+	</p>
+
+	<form th:action="@{/weatherEdit}" method="post" th:object="${weather}">
+		ID: <span th:text="*{id}"></span>
+		<input type="hidden" th:field="*{id}" /><br />
+		Location ID: <input type="text" th:field="*{location_id}" /><br />
+		Name: <input type="text" th:field="*{name}" /><br />
+		Temperature: <input type="text" th:field="*{temperature}" /><br />
+		Humidity: <input type="text" th:field="*{humidity}" /><br />
+
+		<button type="submit">保存</button>
+	</form>
+
+
+	<br></br>
+	<form th:action="@{/goBackToWeatherList}" method="get">
+		<button type="submit" name="return">戻る</button>
+	</form>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+</head>
+
+<body>
+	<p>
+		<span th:text="${weather}">天気記録の一覧</span>
+	</p>
+
+	<form th:action="@{/weatherSearch}" method="get">
+		<input type="text" name="searchId">
+		<button type="submit" name="search">検索</button>
+	</form>
+
+	<table>
+		<tr th:each="data : ${weatherDataList}">
+			<td th:text="${data.id}"></td>
+			<td th:text="${data.location_id}"></td>
+			<td th:text="${data.name}"></td>
+			<td th:text="${data.temperature}"></td>
+			<td th:text="${data.humidity}"></td>
+			<td th:text="${data.date_time}"></td>
+			<td><a th:href="@{/weatherEdit/{id}(id=${data.id})}" class="btn btn-secondary"	name = "edit">編集</a></td>
+			<td><a th:href="@{/delWeather/{id}(id=${data.id})}" class="btn btn-secondary" name = "del">削除</a></td>
+		</tr>
+	</table>
+
+
+	<br></br>
+	<form th:action="@{/goBackToWeatherList}" method="get">
+		<button type="submit" name="return">戻る</button>
+	</form>
+	<br></br>
+	<a th:href="@{/addWeather}">新規登録</a>
+
+	<!--	<p>那覇のデータ</p>
+	<table>
+		<tr th:each="data : ${weatherDataNaha}" th:object="${Weather}">
+			<td th:text="*{location_id}"></td>
+			<td th:text="*{name}"></td>
+			<td th:text="*{temperature}"></td>
+			<td th:text="*{humidity}"></td>
+			<td th:text="*{date_time}"></td>
+		</tr>
+	</table>
+-->
+	<!--	<p>-->
+	<!--		<span th:text="${weatherUpdate}">天気記録を追加、更新、削除する</span>-->
+	<!--	</p>-->
+	<!-- 天気記録を追加、更新、削除するフォーム -->
+	<!--	<form th:action="@{/weather/process}" method="post" th:object="${newWeather}">
+		Location ID: <input type="text" th:field="*{location_id}" /><br />
+		Name: <input type="text" th:field="*{name}" /><br />
+		Temperature: <input type="text" th:field="*{temperature}" /><br />
+		Humidity: <input type="text" th:field="*{humidity}" /><br />
+		Date Time: <input type="datetime-local" th:field="*{date_time}" /><br />
+
+
+		<button type="submit" name="update" value="update">追加</button>
+		<button type="submit" name="update" value="update">更新</button>
+		<button type="submit" name="delete" value="delete">削除</button>
+	</form>-->
+
+</body>
+
+</html>
